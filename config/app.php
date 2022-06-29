@@ -167,6 +167,7 @@ return [
          */
         Spatie\Permission\PermissionServiceProvider::class,
         Eusonlito\LaravelMeta\MetaServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -232,7 +233,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Meta'    => Eusonlito\LaravelMeta\Facade::class,
-
+        'Image' => Intervention\Image\Facades\Image::class,
     ],
 
 ];
