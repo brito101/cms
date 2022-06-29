@@ -6,14 +6,14 @@
 
 @section('content')
     @if (auth()->user()->can('Editar Permissões') &&
-    auth()->user()->can('Excluir Permissões'))
+        auth()->user()->can('Excluir Permissões'))
         @php
             $heads = [['label' => 'ID', 'width' => 5], 'Nome', ['label' => 'Ações', 'no-export' => true, 'width' => 10]];
 
             $list = [];
 
             foreach ($permissions as $permission) {
-                $list[] = [$permission->id, $permission->name, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" href="permission/' . $permission->id . '/edit"><i class="fa fa-lg fa-fw fa-pen"></i></a>' . '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Excluir" href="permission/destroy/' . $permission->id . '" onclick="return confirm(\'Confirma a exclusão desta permissão?\')"><i class="fa fa-lg fa-fw fa-trash"></i></a>'];
+                $list[] = [$permission->id, $permission->name, '<nobr>' . '<a class="btn btn-xs btn-primary mx-1 shadow" title="Editar" href="permission/' . $permission->id . '/edit"><i class="fa fa-lg fa-fw fa-pen"></i></a>' . '<a class="btn btn-xs btn-danger mx-1 shadow" title="Excluir" href="permission/destroy/' . $permission->id . '" onclick="return confirm(\'Confirma a exclusão desta permissão?\')"><i class="fa fa-lg fa-fw fa-trash"></i></a>'];
             }
 
             $config = [
@@ -75,8 +75,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <x-adminlte-datatable id="table1" :heads="$heads" :heads="$heads" :config="$config" striped
-                                hoverable beautify with-buttons />
+                            <x-adminlte-datatable id="table1" :heads="$heads" :heads="$heads" :config="$config"
+                                striped hoverable beautify with-buttons />
                         </div>
                     </div>
                 </div>

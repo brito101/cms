@@ -42,9 +42,8 @@
                                 <div class="d-flex flex-wrap justify-content-between">
                                     <div class="col-12 form-group px-0 pr-md-2">
                                         <label for="name">Nome</label>
-                                        <input type="text" class="form-control {{ $error('name') ?? 'is-invalid' }}"
-                                            id="name" placeholder="Nome Completo" name="name"
-                                            value="{{ old('name') }}" required>
+                                        <input type="text" class="form-control" id="name"
+                                            placeholder="Nome Completo" name="name" value="{{ old('name') }}" required>
                                     </div>
                                 </div>
 

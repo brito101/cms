@@ -40,13 +40,15 @@
                             @method('PUT')
                             <div class="card-body d-flex flex-wrap">
                                 @foreach ($permissions as $permission)
-                                    <div class="col-12 col-md-4 card">
-                                        <div class="card-body p-2">
-                                            <input type="checkbox" style="cursor: pointer" id="{{ $permission->id }}"
-                                                name="{{ $permission->id }}"
-                                                {{ $permission->can == '1' ? 'checked' : '' }}>
-                                            <label for="name" class="my-0 ml-2">{{ $permission->name }}</label>
-                                            </label>
+                                    <div class="col-12 col-md-4">
+                                        <div class="card p-0">
+                                            <div class="card-body ">
+                                                <input type="checkbox" style="cursor: pointer" id="{{ $permission->id }}"
+                                                    name="{{ $permission->id }}"
+                                                    {{ $permission->can == '1' ? 'checked' : '' }}>
+                                                <label for="name" class="my-0 ml-2">{{ $permission->name }}</label>
+                                                </label>
+                                            </div>
                                         </div>
                                     </div>
                                 @endforeach

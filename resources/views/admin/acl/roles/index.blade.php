@@ -6,15 +6,15 @@
 
 @section('content')
     @if (auth()->user()->can('Editar Perfis') &&
-    auth()->user()->can('Sincronizar Perfis') &&
-    auth()->user()->can('Excluir Perfis'))
+        auth()->user()->can('Sincronizar Perfis') &&
+        auth()->user()->can('Excluir Perfis'))
         @php
             $heads = [['label' => 'ID', 'width' => 5], 'Nome', ['label' => 'Ações', 'no-export' => true, 'width' => 10]];
 
             $list = [];
 
             foreach ($roles as $role) {
-                $list[] = [$role->id, $role->name, '<nobr>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Editar" href="role/' . $role->id . '/edit"><i class="fa fa-lg fa-fw fa-pen"></i></a>' . '<a class="btn btn-xs btn-default text-primary mx-1 shadow" title="Sincronizar Permissões" href="role/' . $role->id . '/permission"><i class="fa fa-lg fa-fw fa-sync"></i></a>' . '<a class="btn btn-xs btn-default text-danger mx-1 shadow" title="Excluir" href="role/destroy/' . $role->id . '" onclick="return confirm(\'Confirma a exclusão deste Perfil?\')"><i class="fa fa-lg fa-fw fa-trash"></i></a>'];
+                $list[] = [$role->id, $role->name, '<nobr>' . '<a class="btn btn-xs btn-primary mx-1 shadow" title="Editar" href="role/' . $role->id . '/edit"><i class="fa fa-lg fa-fw fa-pen"></i></a>' . '<a class="btn btn-xs btn-secondary mx-1 shadow" title="Sincronizar Permissões" href="role/' . $role->id . '/permission"><i class="fa fa-lg fa-fw fa-sync"></i></a>' . '<a class="btn btn-xs btn-danger mx-1 shadow" title="Excluir" href="role/destroy/' . $role->id . '" onclick="return confirm(\'Confirma a exclusão deste Perfil?\')"><i class="fa fa-lg fa-fw fa-trash"></i></a>'];
             }
 
             $config = [
@@ -77,8 +77,8 @@
                             </div>
                         </div>
                         <div class="card-body">
-                            <x-adminlte-datatable id="table1" :heads="$heads" :heads="$heads" :config="$config" striped
-                                hoverable beautify with-buttons />
+                            <x-adminlte-datatable id="table1" :heads="$heads" :heads="$heads" :config="$config"
+                                striped hoverable beautify with-buttons />
                         </div>
                     </div>
                 </div>
