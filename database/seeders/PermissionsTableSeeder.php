@@ -74,7 +74,7 @@ class PermissionsTableSeeder extends Seeder
                 'created_at' => new DateTime('now')
             ],
 
-            /** Users 12 to 16 */
+            /** Users 12 to 17 */
             [
                 'name' => 'Acessar Usuários',
                 'guard_name' => 'web',
@@ -87,6 +87,11 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'name' => 'Criar Usuários',
+                'guard_name' => 'web',
+                'created_at' => new DateTime('now')
+            ],
+            [
+                'name' => 'Editar Usuário',
                 'guard_name' => 'web',
                 'created_at' => new DateTime('now')
             ],

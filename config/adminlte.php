@@ -294,6 +294,12 @@ return [
                 ],
             ]
         ],
+        ['header' => 'account_settings'],
+        [
+            'text' => 'Perfil',
+            'url' => 'admin/user/edit',
+            'icon' => 'fas fa-fw fa-user'
+        ],
         [
             'text'        => 'Site',
             'url'    => '/',
