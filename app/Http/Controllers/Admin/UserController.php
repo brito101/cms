@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
 use Spatie\Permission\Models\Role;
 use Image;
+use DataTables;
 
 class UserController extends Controller
 {
@@ -19,18 +20,29 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         if (!Auth::user()->hasPermissionTo('Listar Usuários')) {
             abort(403, 'Acesso não autorizado');
         }
 
         if (Auth::user()->hasRole('Programador')) {
-            $users = User::all();
+            $users = User::all('id', 'name', 'email', 'type');
         } elseif (Auth::user()->hasRole('Administrador')) {
-            $users = User::role(['Administrador', 'Usuário'])->get();
+            $users = User::role(['Administrador', 'Usuário'])->get('id', 'name', 'email', 'type');
         } else {
             $users = null;
+        }
+
+        if ($request->ajax()) {
+            return Datatables::of($users)
+                ->addIndexColumn()
+                ->addColumn('action', function ($row) {
+                    $btn = '<a class="btn btn-xs btn-primary mx-1 shadow" title="Editar" href="users/' . $row->id . '/edit"><i class="fa fa-lg fa-fw fa-pen"></i></a>' . '<a class="btn btn-xs btn-danger mx-1 shadow" title="Excluir" href="users/destroy/' . $row->id . '" onclick="return confirm(\'Confirma a exclusão desta usuário?\')"><i class="fa fa-lg fa-fw fa-trash"></i></a>';
+                    return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
         }
 
         return view('admin.users.index', compact('users'));
@@ -98,6 +110,8 @@ class UserController extends Controller
         if ($user->save()) {
             if (!empty($request->role)) {
                 $user->syncRoles($request->role);
+                $user->type = $request->role;
+                $user->save();
             }
             return redirect()
                 ->route('admin.users.index')
@@ -207,6 +221,8 @@ class UserController extends Controller
         if ($user->update($data)) {
             if (!empty($request->role)) {
                 $user->syncRoles($request->role);
+                $user->type = $request->role;
+                $user->save();
             }
             return redirect()
                 ->route('admin.users.index')
