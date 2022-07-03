@@ -67,7 +67,7 @@ class RolesHasPermissionTableSeeder extends Seeder
                 'role_id' => 2
             ],
 
-            /** Users  de 12 to 16 (programmer and administrator) */
+            /** Users 12 to 17 (programmer and administrator) */
             [
                 'permission_id' => 12,
                 'role_id' => 1
@@ -114,6 +114,88 @@ class RolesHasPermissionTableSeeder extends Seeder
             ],
             [
                 'permission_id' => 17,
+                'role_id' => 2
+            ],
+            /** Settings 18 to 22 (programmer and administrator) */
+            [
+                'permission_id' => 18,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 18,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 19,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 19,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 20,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 20,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 21,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 21,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 22,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 22,
+                'role_id' => 2
+            ],
+            /** Pages 23 to 27 (programmer and administrator) */
+            [
+                'permission_id' => 23,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 23,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 24,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 24,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 25,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 25,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 26,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 26,
+                'role_id' => 2
+            ],
+            [
+                'permission_id' => 27,
+                'role_id' => 1
+            ],
+            [
+                'permission_id' => 27,
                 'role_id' => 2
             ],
         ]);

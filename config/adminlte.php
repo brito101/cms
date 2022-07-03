@@ -263,6 +263,53 @@ return [
                 ],
             ],
         ],
+        ['header'  => 'Configurações'],
+        [
+            'text' => 'Meu Perfil',
+            'url'  => 'admin/user/edit',
+            'icon' => 'fas fa-fw fa-user',
+            'can'  => 'Editar Usuário',
+        ],
+        [
+            'text' => 'Páginas',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-file',
+            'can'  => 'Acessar Páginas',
+            'submenu' => [
+                [
+                    'text' => 'Listagem de Páginas',
+                    'url'  => 'admin/pages',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Listar Páginas',
+                ],
+                [
+                    'text' => 'Cadastro de Página',
+                    'url'  => 'admin/pages/create',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Criar Páginas',
+                ],
+            ],
+        ],
+        [
+            'text' => 'Site',
+            'url'  => '#',
+            'icon' => 'fas fa-fw fa-cogs',
+            'can'  => 'Acessar Configurações do Site',
+            'submenu' => [
+                [
+                    'text' => 'Listagem de Conf.',
+                    'url'  => 'admin/settings',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Listar Configurações do Site',
+                ],
+                [
+                    'text' => 'Cadastro de Conf.',
+                    'url'  => 'admin/settings/create',
+                    'icon' => 'fas fa-fw fa-chevron-right',
+                    'can'  => 'Criar Configurações do Site',
+                ],
+            ],
+        ],
         [
             'text'    => 'ACL',
             'icon'    => 'fas fa-fw fa-user-shield',

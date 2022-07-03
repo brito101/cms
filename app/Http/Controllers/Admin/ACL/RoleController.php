@@ -99,11 +99,9 @@ class RoleController extends Controller
         }
         $role = Role::where('id', $id)->first();
         if (empty($role->id)) {
-            throw new UnauthorizedException('403', 'You do not have the required authorization.');
+            abort(403, 'Acesso não autorizado');
         }
-        return view('admin.acl.roles.edit', [
-            'role' => $role
-        ]);
+        return view('admin.acl.roles.edit', compact('role'));
     }
 
     /**
