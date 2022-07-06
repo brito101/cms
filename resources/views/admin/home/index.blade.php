@@ -22,17 +22,50 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                @if (Auth::user()->hasRole('Programador|Administrador'))
-                    <div class="col-12 col-sm-6 col-md-4">
-                        <div class="info-box mb-3">
-                            <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-user-shield"></i></span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">Administradores</span>
-                                <span class="info-box-number">{{ $administrators }}</span>
-                            </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>{{ $totalAccess }}</h3>
+                            <p>Visitantes</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-eye"></i>
                         </div>
                     </div>
-                @endif
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="small-box bg-success">
+                        <div class="inner">
+                            <h3>{{ $onlineUsers }}</h3>
+                            <p>Usários Online</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>{{ $pages }}</h3>
+                            <p>Páginas</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fa fa-file"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>{{ $users }}</h3>
+                            <p>Usuários</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
