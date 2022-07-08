@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\UserRequest;
 use App\Models\User;
+use App\Models\Views\User as ViewsUser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -27,9 +28,9 @@ class UserController extends Controller
         }
 
         if (Auth::user()->hasRole('Programador')) {
-            $users = User::all('id', 'name', 'email', 'type');
+            $users = ViewsUser::all('id', 'name', 'email', 'type');
         } elseif (Auth::user()->hasRole('Administrador')) {
-            $users = User::role(['Administrador', 'Usuário'])->get('id', 'name', 'email', 'type');
+            $users = ViewsUser::whereIn('type', ['Administrador', 'Usuário'])->get();
         } else {
             $users = null;
         }
