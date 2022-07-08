@@ -24,6 +24,7 @@ class AdminController extends Controller
         $access = $statistics['access'];
         $chart = $statistics['chart'];
         $totalAccess = $statistics['totalAccess'];
+        $topPages = $statistics['topPages'];
 
         return view('admin.home.index', compact(
             'users',
@@ -32,7 +33,8 @@ class AdminController extends Controller
             'access',
             'chart',
             'totalAccess',
-            'pages'
+            'pages',
+            'topPages'
         ));
     }
 
@@ -88,12 +90,31 @@ class AdminController extends Controller
         $chart->labels = (array_keys($dataList));
         $chart->dataset = (array_values($dataList));
 
+        /** Top Pages */
+
+        $pages = Visit::where('url', 'not like', "%admin%")->where('method', 'GET')->get();
+        $topPages = $pages->groupBy(function ($reg) {
+            $basePath = 'http://localhost/cms/public';
+            $page = explode("/", str_replace($basePath, '', $reg->url));
+            return $page[1] ?? 'home';
+        });
+
+        $pageList = [];
+        foreach ($topPages as $key => $value) {
+            $pageList[ucfirst($key)] = count($value);
+        }
+
+        $pages = new \stdClass();
+        $pages->labels = (array_keys($pageList));
+        $pages->dataset = (array_values($pageList));
+
         return array(
             'onlineUsers' => $onlineUsers,
             'access' => $access->count(),
             'percent' => $percent,
             'chart' => $chart,
-            'totalAccess' => $totalAccess
+            'totalAccess' => $totalAccess,
+            'topPages' => $pages,
         );
     }
 }
