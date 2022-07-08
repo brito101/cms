@@ -19,6 +19,8 @@ mix.js("resources/js/app.js", "public/js")
     .scripts(["resources/js/company.js"], "public/js/company.js")
     .scripts(["resources/js/address.js"], "public/js/address.js")
     .scripts(["resources/js/phone.js"], "public/js/phone.js")
+    /** Web */
+    .copy("resources/views/site/assets/", "public/site/assets/")
     .options({
         processCssUrls: false,
     })
