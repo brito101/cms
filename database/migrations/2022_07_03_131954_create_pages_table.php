@@ -17,7 +17,7 @@ class CreatePagesTable extends Migration
             $table->id();
             $table->string('title');
             $table->string('slug');
-            $table->text('body')->nullable();
+            $table->longText('body')->nullable();
             /*pattern*/
             $table->foreignId('user_id')
                 ->constrained()

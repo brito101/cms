@@ -1,5 +1,8 @@
 @extends('site.master.master')
 
+@section('title', 'Home')
+@section('description', $frontSettings['Subtítulo do Site'])
+
 @section('content')
     <div class="slider_area">
         <div class="single_slider  d-flex align-items-center slider_bg_1">
@@ -7,10 +10,10 @@
                 <div class="row align-items-center">
                     <div class="col-xl-7 col-md-6">
                         <div class="slider_text ">
-                            <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">Promote your app <br>
-                                with applab</h3>
-                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">Get more users to promote
-                                your app with this template</p>
+                            <h3 class="wow fadeInDown" data-wow-duration="1s" data-wow-delay=".1s">
+                                {{ $frontSettings['Título do Site'] }}</h3>
+                            <p class="wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
+                                {{ $frontSettings['Subtítulo do Site'] }}</p>
                             <div class="video_service_btn wow fadeInLeft" data-wow-duration="1s" data-wow-delay=".1s">
                                 <a href="#" class="boxed-btn3">Get Start Now</a>
                             </div>

@@ -25,7 +25,7 @@ class PageRequest extends FormRequest
     {
         return [
             'title' => "required|min:1|max:191|unique:pages,title,{$this->id},id",
-            'body' => 'nullable|max:40000'
+            'body' => 'nullable'
         ];
     }
 }

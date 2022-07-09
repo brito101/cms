@@ -39,30 +39,11 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
-                                        <li><a href="features.html">Features</a></li>
-                                        <li><a href="Pricing.html">Pricing</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="elements.html">elements</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        @foreach ($frontMenu as $slug => $title)
+                                            <li><a href="{{ $slug }}">{{ $title }}</a></li>
+                                        @endforeach
                                     </ul>
                                 </nav>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="Appointment">
-                                <div class="book_btn d-none d-lg-block">
-                                    <a href="#">Download</a>
-                                </div>
                             </div>
                         </div>
                         <div class="col-12">
@@ -91,8 +72,7 @@
                                 </a>
                             </div>
                             <p>
-                                Firmament morning sixth subdue darkness
-                                creeping gathered divide.
+                                {{ $frontSettings['Subtítulo do Site'] }}
                             </p>
                             <div class="socail_links">
                                 <ul>
@@ -119,13 +99,12 @@
                     <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
                         <div class="footer_widget">
                             <h3 class="footer_title">
-                                Services
+                                Menu
                             </h3>
                             <ul>
-                                <li><a href="#">Team management</a></li>
-                                <li><a href="#">Collaboration</a></li>
-                                <li><a href="#">Todo</a></li>
-                                <li><a href="#">Events</a></li>
+                                @foreach ($frontMenu as $slug => $title)
+                                    <li><a href="{{ $slug }}">{{ $title }}</a></li>
+                                @endforeach
                             </ul>
 
                         </div>
