@@ -62,16 +62,16 @@ class AdminController extends Controller
         $access = Visit::where('created_at', '>=', date("Y-m-d"))
             ->where('url', 'not like', "%admin%")
             ->get();
-        $accessYesterday = Visit::where('created_at', '>=', Carbon::now()->subDays(1))
-            ->where('created_at', '<', Carbon::now())
+        $accessYesterday = Visit::where('created_at', '>=', date("Y-m-d", strtotime('-1 day')))
+            ->where('created_at', '<', date("Y-m-d"))
             ->where('url', 'not like', "%admin%")
             ->count();
 
-        $countAccess = $access->count();
+        $totalDaily = $access->count();
 
         $percent = 0;
         if ($accessYesterday > 0) {
-            $percent = number_format((($countAccess - $accessYesterday) / $countAccess * 100), 2, ",", ".");
+            $percent = number_format((($totalDaily - $accessYesterday) / $totalDaily * 100), 2, ",", ".");
         }
 
         $totalAccess = Visit::where('url', 'not like', "%admin%")->count();
@@ -110,7 +110,7 @@ class AdminController extends Controller
 
         return array(
             'onlineUsers' => $onlineUsers,
-            'access' => $access->count(),
+            'access' => $totalDaily,
             'percent' => $percent,
             'chart' => $chart,
             'totalAccess' => $totalAccess,
