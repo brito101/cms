@@ -92,7 +92,11 @@ class AdminController extends Controller
 
         /** Top Pages */
 
-        $pages = Visit::where('url', 'not like', "%admin%")->where('method', 'GET')->get();
+        $pages = Visit::where('url', 'not like', "%admin%")
+            ->where('url', 'not like', "%css%")
+            ->where('url', 'not like', "%img%")
+            ->where('url', 'not like', "%js%")
+            ->where('method', 'GET')->get();
         $topPages = $pages->groupBy(function ($reg) {
             $basePath = 'http://localhost/cms/public';
             $page = explode("/", str_replace($basePath, '', $reg->url));

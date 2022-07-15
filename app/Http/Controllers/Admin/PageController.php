@@ -63,6 +63,30 @@ class PageController extends Controller
         $data['slug'] = Str::slug($request->title);
         $data['user_id'] = Auth::user()->id;
 
+        $content = $request->body;
+        $dom = new \DOMDocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('img');
+
+        foreach ($imageFile as $item => $image) {
+            $img = $image->getAttribute('src');
+            if (filter_var($img, FILTER_VALIDATE_URL) == false) {
+                list($type, $img) = explode(';', $img);
+                list(, $img) = explode(',', $img);
+                $imageData = base64_decode($img);
+                $image_name =  $data['slug'] . '-' . time() . $item . '.png';
+                $path = storage_path() . '/app/public/upload/' . $image_name;
+                file_put_contents($path, $imageData);
+                $image->removeAttribute('src');
+                $image->removeAttribute('data-filename');
+                $image->setAttribute('alt', $request->title);
+                $image->setAttribute('src', url('storage/upload/' . $image_name));
+            }
+        }
+
+        $content = $dom->saveHTML();
+        $data['body'] = $content;
+
         $page = Page::create($data);
 
         if ($page->save()) {
@@ -119,6 +143,30 @@ class PageController extends Controller
         $data = $request->all();
         $data['slug'] = Str::slug($request->title);
         $data['user_id'] = Auth::user()->id;
+
+        $content = $request->body;
+        $dom = new \DOMDocument();
+        $dom->loadHtml($content, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+        $imageFile = $dom->getElementsByTagName('img');
+
+        foreach ($imageFile as $item => $image) {
+            $img = $image->getAttribute('src');
+            if (filter_var($img, FILTER_VALIDATE_URL) == false) {
+                list($type, $img) = explode(';', $img);
+                list(, $img) = explode(',', $img);
+                $imageData = base64_decode($img);
+                $image_name =  $data['slug'] . '-' . time() . $item . '.png';
+                $path = storage_path() . '/app/public/upload/' . $image_name;
+                file_put_contents($path, $imageData);
+                $image->removeAttribute('src');
+                $image->removeAttribute('data-filename');
+                $image->setAttribute('alt', $request->title);
+                $image->setAttribute('src', url('storage/upload/' . $image_name));
+            }
+        }
+
+        $content = $dom->saveHTML();
+        $data['body'] = $content;
 
         if ($page->update($data)) {
             return redirect()

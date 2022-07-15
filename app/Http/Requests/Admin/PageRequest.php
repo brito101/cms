@@ -24,7 +24,7 @@ class PageRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => "required|min:1|max:191|unique:pages,title,{$this->id},id",
+            'title' => "required|min:1|max:191|unique:pages,title,{$this->id},id,deleted_at,NULL",
             'body' => 'nullable'
         ];
     }
